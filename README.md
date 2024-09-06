@@ -14,16 +14,13 @@
 This validator uses BespokeLabs.AI's minicheck API to evaluate LLM generated text against the provided context. It checks if the claims in the generated text are supported by the given context, using a configurable threshold for determining support. The validator can process the input as a whole or split it into individual sentences for more granular evaluation.
 
 ### Requirements
-
 * Dependencies:
 	- guardrails-ai>=0.4.0
 	- nltk
 	- bespokelabs
 	- tenacity
-
 * Foundation model access keys:
 	- BESPOKE_API_KEY (get it from [BespokeLabs Console](https://console.bespokelabs.ai/))
-
 ## Installation
 
 ```bash
