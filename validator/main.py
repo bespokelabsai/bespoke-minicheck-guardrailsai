@@ -16,7 +16,7 @@ from bespokelabs import BespokeLabs
 
 nltk.download('punkt', quiet=True)
 
-@register_validator(name="guardrails/bespokeai_factcheck", data_type="string")
+@register_validator(name="bespokelabsai/bespokeai_factcheck", data_type="string")
 class BespokeAIFactCheck(Validator):
     """Validates that the LLM-generated text is supported by the provided
     context using BespokeAI's factcheck API.
