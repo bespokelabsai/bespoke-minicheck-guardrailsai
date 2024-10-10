@@ -46,11 +46,10 @@ guard = Guard().use(
     BespokeMiniCheck,
     split_sentences=True,
     threshold=0.5,
-    on_fail="fix"
 )
 
-guard.validate("Alex likes cats.", metadata={"context": "Alex likes cats and dogs"})  # Validator passes
-guard.validate("Alex likes cats.", metadata={"context": "Alex likes dogs, but not cats."})  # Validator fails
+guard.validate("Alex likes cats.", metadata={"context": "Alex likes cats and dogs"}) # validation passes
+guard.validate("Alex likes cats.", metadata={"context": "Alex likes dogs, but not cats."})  # validation fails
 ```
 
 # API Reference
