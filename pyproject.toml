@@ -1,6 +1,6 @@
 [project]
 name = "bespokeai-factcheck"
-version = "0.0.0"
+version = "0.0.1"
 description = "Hallucination Detection using BespokeLabs.AI's MiniCheck model."
 authors = [{ name = "Guardrails AI", email = "contact@guardrailsai.com" }, { name = "BespokeLabs.AI", email = "company@bespokelabs.ai" }]
 license = { file = "LICENSE" }
