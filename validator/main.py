@@ -69,7 +69,13 @@ class BespokeMiniCheck(Validator):
             claim=model_input["claim"],
             context=model_input["context"],
         )
-        return response
+
+        outputs = {
+            'claim': model_input['claim'],
+            'response': response,
+        }
+
+        return outputs
 
     def _validate(self, value: Any, metadata: Dict = {}) -> ValidationResult:
         threshold = self._threshold if "threshold" not in metadata else metadata["threshold"]
@@ -89,17 +95,17 @@ class BespokeMiniCheck(Validator):
             is_supported = [future.result() for future in concurrent.futures.as_completed(futures)]
 
         all_claims_supported = all(
-            response.support_prob >= threshold
-            for response in is_supported
+            claim_response_dict['response'].support_prob >= threshold
+            for claim_response_dict in is_supported
         )
 
         if all_claims_supported:
             return PassResult()
         else:
             supported_claims = [
-                claim
-                for claim, response in zip(claims, is_supported)
-                if response.support_prob >= threshold
+                claim_response_dict['claim']
+                for claim_response_dict in is_supported
+                if claim_response_dict['response'].support_prob >= threshold
             ]
 
             return FailResult(
